@@ -18,7 +18,12 @@ export const AuthLayout = ({ children, title = "" }) => {
         md={6}
         lg={4}
         xl={3}
-        sx={{ width: {sm: 450}, backgroundColor: "white", padding: 3, borderRadius: 2 }}
+        sx={{
+          width: { sm: 450 },
+          backgroundColor: "white",
+          padding: 3,
+          borderRadius: 2,
+        }}
       >
         <Typography variant="h5" sx={{ mb: 1 }}>
           {title}
