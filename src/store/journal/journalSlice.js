@@ -12,7 +12,7 @@ export const journalSlice = createSlice({
         //     title: '',
         //     body: '',
         //     date: '',
-        //     imagesURLS: [],
+        //     imagesUrls: [],
         // }
     },
     // Todos los reducers deben ser funciones puras y síncronas. Para tareas asíncronas, usar thunks.
@@ -46,6 +46,10 @@ export const journalSlice = createSlice({
             state.notes = state.notes.map(note => note.id === action.payload.id ? action.payload : note);
             state.messageSaved = `¡La nota se ha actualizado correctamente!`;
         },
+        setPhotosToActiveNote: (state, action) => {
+            state.activeNote.imagesUrls = [...state.activeNote.imagesUrls, ...action.payload]
+            state.isSaving = false;
+        },
         // Eliminar una nota por su id.
         deleteNoteById: (state, action) => {
         }
@@ -53,4 +57,4 @@ export const journalSlice = createSlice({
 });
 
 
-export const { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, noteUpdated, deleteNoteById } = journalSlice.actions;
+export const { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, noteUpdated, deleteNoteById, setPhotosToActiveNote } = journalSlice.actions;
