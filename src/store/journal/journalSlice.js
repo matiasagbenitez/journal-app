@@ -29,6 +29,7 @@ export const journalSlice = createSlice({
         // Hacer click en una nota para que se muestre en el editor.
         setActiveNote: (state, action) => {
             state.activeNote = action.payload;
+            state.messageSaved = '';
         },
         // Cargar las notas en Firebase.
         setNotes: (state, action) => {
@@ -36,10 +37,14 @@ export const journalSlice = createSlice({
         },
         // Cuando se está guardando una nota.
         setSaving: (state) => {
-
+            state.isSaving = true;
+            state.messageSaved = '';
         },
-        // Actualizar una nota
-        updateNote: (state, action) => {
+        // Una nota se ha guardado, se debe actualizar el mensaje de guardado y el estado de guardado.
+        noteUpdated: (state, action) => {
+            state.isSaving = false;
+            state.notes = state.notes.map(note => note.id === action.payload.id ? action.payload : note);
+            state.messageSaved = `¡La nota se ha actualizado correctamente!`;
         },
         // Eliminar una nota por su id.
         deleteNoteById: (state, action) => {
@@ -48,4 +53,4 @@ export const journalSlice = createSlice({
 });
 
 
-export const { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, updateNote, deleteNoteById } = journalSlice.actions;
+export const { addNewEmptyNote, savingNewNote, setActiveNote, setNotes, setSaving, noteUpdated, deleteNoteById } = journalSlice.actions;
