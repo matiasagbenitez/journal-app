@@ -3,7 +3,6 @@ import { Box, Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
 import { SidebarItem } from "./SidebarItem";
 
 export const Sidebar = ({ drawerWith = 240 }) => {
-  const { displayName } = useSelector((state) => state.auth);
   const { notes } = useSelector((state) => state.journal);
   return (
     <Box
@@ -26,7 +25,7 @@ export const Sidebar = ({ drawerWith = 240 }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component={"div"}>
-            {displayName}
+            Listado de notas
           </Typography>
         </Toolbar>
         <Divider />

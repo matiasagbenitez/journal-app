@@ -58,6 +58,11 @@ export const journalSlice = createSlice({
         },
         // Eliminar una nota por su id.
         deleteNoteById: (state, action) => {
+            state.activeNote = null;
+            state.notes = state.notes.filter(note => note.id !== action.payload);
+        },
+        resetActiveNote: (state) => {
+            state.activeNote = null;
         }
     }
 });
@@ -67,6 +72,7 @@ export const {
     addNewEmptyNote,
     deleteNoteById,
     noteUpdated,
+    resetActiveNote,
     savingNewNote,
     setActiveNote,
     setNotes,
