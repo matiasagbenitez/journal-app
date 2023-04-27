@@ -1,15 +1,27 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
+import { getEnvironments } from "../helpers/getEnvironments";
+
+const {
+    VITE_API_KEY,
+    VITE_AUTH_DOMAIN,
+    VITE_PROJECT_ID,
+    VITE_STORAGE_BUCKET,
+    VITE_MESSAGING_SENDER_ID,
+    VITE_APP_ID
+} = getEnvironments();
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBJDLhY_FZkFwYVCmWlDQqFMpKj6j4juX8",
-    authDomain: "journal-app-e6a14.firebaseapp.com",
-    projectId: "journal-app-e6a14",
-    storageBucket: "journal-app-e6a14.appspot.com",
-    messagingSenderId: "316612413549",
-    appId: "1:316612413549:web:53fd0e94e996ab53355764"
+    apiKey: VITE_API_KEY,
+    authDomain: VITE_AUTH_DOMAIN,
+    projectId: VITE_PROJECT_ID,
+    storageBucket: VITE_STORAGE_BUCKET,
+    messagingSenderId: VITE_MESSAGING_SENDER_ID,
+    appId: VITE_APP_ID
 };
+
+console.log(firebaseConfig);
 
 // Initialize Firebase
 export const FirebaseApp = initializeApp(firebaseConfig);
